@@ -61,9 +61,11 @@ export default {
     },
     methods:{
         logout(){
+            this.$store.dispatch('layout/load',true);
              this.$store.dispatch('auth/reset',this.user).then(result => {
                     this.$router.push('/login');
                 }).catch(error => {
+                  this.$store.dispatch('layout/load',false);
                   alert("gagal logout");
                   console.log(error);
                 })

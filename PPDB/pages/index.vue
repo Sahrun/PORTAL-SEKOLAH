@@ -30,8 +30,8 @@ export default {
     Logo
   },
   created(){
-      // console.log(this.$store.state.auth);
-    }
+        this.$store.dispatch('layout/load',false);
+  }
 }
 </script>
 

@@ -3,12 +3,13 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _08d77030 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
-const _4aece7f4 = () => interopDefault(import('..\\pages\\register.vue' /* webpackChunkName: "pages_register" */))
-const _c89ac148 = () => interopDefault(import('..\\pages\\sekolah.vue' /* webpackChunkName: "pages_sekolah" */))
-const _2d0e3ede = () => interopDefault(import('..\\pages\\pendaftaran\\pendaftaran.vue' /* webpackChunkName: "pages_pendaftaran_pendaftaran" */))
-const _31eca4d1 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
-const _3e121279 = () => interopDefault(import('..\\pages\\pendaftaran\\pendaftaran' /* webpackChunkName: "" */))
+const _313ccbde = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
+const _554e0daa = () => interopDefault(import('..\\pages\\register.vue' /* webpackChunkName: "pages_register" */))
+const _6d17e976 = () => interopDefault(import('..\\pages\\sekolah.vue' /* webpackChunkName: "pages_sekolah" */))
+const _7048b1e6 = () => interopDefault(import('..\\pages\\pendaftaran\\daftar.vue' /* webpackChunkName: "pages_pendaftaran_daftar" */))
+const _709b7448 = () => interopDefault(import('..\\pages\\pendaftaran\\details.vue' /* webpackChunkName: "pages_pendaftaran_details" */))
+const _1db9f6fa = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _267c5364 = () => interopDefault(import('..\\pages\\pendaftaran\\daftar' /* webpackChunkName: "" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -28,28 +29,32 @@ export const routerOptions = {
 
   routes: [{
     path: "/login",
-    component: _08d77030,
+    component: _313ccbde,
     name: "login"
   }, {
     path: "/register",
-    component: _4aece7f4,
+    component: _554e0daa,
     name: "register"
   }, {
     path: "/sekolah",
-    component: _c89ac148,
+    component: _6d17e976,
     name: "sekolah"
   }, {
-    path: "/pendaftaran/pendaftaran",
-    component: _2d0e3ede,
-    name: "pendaftaran-pendaftaran"
+    path: "/pendaftaran/daftar",
+    component: _7048b1e6,
+    name: "pendaftaran-daftar"
+  }, {
+    path: "/pendaftaran/details",
+    component: _709b7448,
+    name: "pendaftaran-details"
   }, {
     path: "/",
-    component: _31eca4d1,
+    component: _1db9f6fa,
     name: "index"
   }, {
-    path: "/pendaftaran",
+    path: "/pendaftaran/edit",
     components: {
-      default: _3e121279
+      default: _267c5364
     },
     name: "pendaftaran"
   }],

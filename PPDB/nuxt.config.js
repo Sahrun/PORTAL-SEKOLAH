@@ -21,10 +21,10 @@ export default {
     middleware: ['auth'],
     extendRoutes (routes, resolve) {
       routes.push({
-        path: '/pendaftaran',
+        path: '/pendaftaran/edit',
         name:'pendaftaran',
         components: {
-          default: resolve(__dirname, 'pages/pendaftaran/pendaftaran'), // or routes[index].component
+          default: resolve(__dirname, 'pages/pendaftaran/daftar'), // or routes[index].component
         }
       })
     }

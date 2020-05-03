@@ -38,7 +38,7 @@ class PPDBController extends Controller
      */
     public function data_keluarga_save(Request $request)
     {
-        //
+        return $this->logic->data_keluarga_save($request);
     }
 
     /**
@@ -49,7 +49,7 @@ class PPDBController extends Controller
      */
     public function asal_sekolah_save(Request $request)
     {
-        //
+        return $this->logic->asal_sekolah_save($request);
     }
 
     /**
@@ -58,32 +58,19 @@ class PPDBController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function initial_parameter()
     {
-        //
+        return $this->logic->initial_parameter(); 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function current_data()
     {
-        //
+        return $this->logic->current_data();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function resume_save(Request $request)
     {
-        //
+        return $this->logic->resume_save($request);
     }
 
     /**

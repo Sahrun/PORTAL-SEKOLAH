@@ -45,8 +45,5 @@ export const actions = {
      cookies.remove('x-access-token')
      return response
     })
-    
-    
-    
   }
 }

@@ -48,5 +48,8 @@ Route::group([
         Route::post('data-diri-save','Api\PPDB\PPDBController@data_diri_save');
         Route::post('data-keluarga-save','Api\PPDB\PPDBController@data_keluarga_save');
         Route::post('asal-sekolah-save','Api\PPDB\PPDBController@asal_sekolah_save');
+        Route::post('resume-save','Api\PPDB\PPDBController@resume_save');
+        Route::get('initial-parameter','Api\PPDB\PPDBController@initial_parameter');
+        Route::get('info-user','Api\PPDB\PPDBController@current_data');
     });
 });

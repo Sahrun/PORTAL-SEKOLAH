@@ -7,14 +7,16 @@ use Carbon\Carbon;
 use App\PPDBUser;
 use App\User;
 use App\Users;
+use App\Repository\PPDBRepository;
 
 class AuthLogic
 {
     public $repo;
     public $ppdb_siswa;
+    public $ppdb_repo;
 
-    function __construct() {
-     //   $this->repo = $_repo;
+    function __construct(PPDBRepository $_ppdb_logic) {
+       $this->ppdb_repo = $_ppdb_logic;
     }
 
     public function register_user($data){
@@ -59,7 +61,7 @@ class AuthLogic
          $result = array(
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
-            'user' => get_current_user(),
+            'user' => $this->get_current_user(),
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
             )->toDateTimeString()
@@ -79,6 +81,13 @@ class AuthLogic
     }
     public function get_current_user(){
         $user = Auth::user();
+        if($user->role == "calon_siswa")
+        {
+            $ppdb =  $this->ppdb_repo->ppdb_information($user->id_user);
+            $user->setAttribute('current_step', $ppdb->current_step);
+            $user->setAttribute('is_complete', $ppdb->is_complete);
+        }
+
         return $user;
     }
 

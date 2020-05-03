@@ -83,9 +83,13 @@ export default {
       register(){
         var validation = this.validation();
         if(validation){
+          this.$store.dispatch('layout/load',true);
           api.auth.register(this.user)
           .then(response => {
               this.$router.push('/login');
+          }).catch(error => {
+            this.$store.dispatch('layout/load',false);
+            alert("Terjadi kesalahan")
           });
         }
         
@@ -94,28 +98,31 @@ export default {
         var valid = true;
         this.issubmit = true;
         if(!this.user.name){
-            this.error.name="Nama harus di isi"
+            this.error.name="nama harus di isi"
             valid = false
         }if(!this.user.email){
-            this.error.email="Email harus di isi"
+            this.error.email="email harus di isi"
             valid = false
         }if(!this.user.password){
-            this.error.password="Password harus di isi"
+            this.error.password="password harus di isi"
             valid = false
         }if(!this.user.password_confirmation)
         {
-            this.error.password_confirmation="Confirmasi Password harus di isi"
+            this.error.password_confirmation="confirmasi password harus di isi"
             valid = false
         }
 
         if(!!this.user.password && !!this.user.password_confirmation && (this.user.password != this.user.password_confirmation))
         {
-          this.error.password_confirmation="Confirmasi Password salah"
+          this.error.password_confirmation="confirmasi password salah"
           valid = false
         }
 
         return valid;
       }
+    },
+    created(){
+      // this.$store.dispatch('layout/load',false);
     }
 }
 </script>

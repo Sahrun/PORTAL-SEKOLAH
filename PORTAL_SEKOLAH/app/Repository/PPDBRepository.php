@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Users;
 use App\PPDBUser;
 use App\PPDBCalonSiswa;
+use App\Agama;
 use Illuminate\Support\Facades\DB;
 
 class PPDBRepository
@@ -40,7 +41,10 @@ class PPDBRepository
     }
 
     public function get_calon_siswa_by_user_id($id){
-        $calon_siswa = $this->ppdb_calon_siswa::where('user_id', $id)->first();
+        $calon_siswa = $this->ppdb_calon_siswa::leftjoin('agama as  agm', 'agm.id', '=', 'ppdb_calon_siswa.agama_id')
+                       ->select('ppdb_calon_siswa.*', 'agm.nama as agama')
+                       ->where('ppdb_calon_siswa.user_id', $id)
+                       ->first();
         return $calon_siswa;
     }
 
@@ -50,6 +54,18 @@ class PPDBRepository
 
     public function calon_siswa_update($calon_siswa){
         $calon_siswa->save();
+    }
+    
+    public function list_agama(){
+        $result = Agama::all();
+        return $result;
+    }
+    public function ppdb_information($id){
+        $ppdb = $this->ppdb_user::leftjoin('ppdb_calon_siswa as  b', 'b.user_id', '=', 'ppdb_user.id')
+                       ->select('b.is_complete', 'b.current_step')
+                       ->where('ppdb_user.id', $id)
+                       ->first();
+        return $ppdb;
     }
 
 }

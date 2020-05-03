@@ -81,15 +81,16 @@ export default {
         login(){
            var validation = this.validation();
             if(validation){
+              this.$store.dispatch('layout/load',true);
               this.$store.dispatch('auth/login',this.user).then(result => {
-                      this.$router.push('/');
+                   this.$router.push('/');
                   }).catch(error => {
+                    this.$store.dispatch('layout/load',false);
                     if(error.response.status){
-                      this.error.password ="Password salah"
+                      this.error.password ="password salah"
                     }else{
                       alert("gagal login");
                     }
-                    console.log(error);
                 })
             }
         },
@@ -97,18 +98,19 @@ export default {
           var valid = true;
           this.issubmit = true;
           if(!this.user.email){
-              this.error.email="User Name harus di isi"
+              this.error.email="user name harus di isi"
               valid = false
           }if(!this.user.password){
-              this.error.password="Password harus di isi"
+              this.error.password="password harus di isi"
               valid = false
           }
 
           return valid;
           }
     },
-    created(){
-      
+    mounted(){
+      this.$store.dispatch('layout/load',false);
+      // console.log(this.$store.state);
     }
 }
 </script>
