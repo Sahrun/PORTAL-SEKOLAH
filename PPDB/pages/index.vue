@@ -8,7 +8,7 @@
             SELAMAT DATANG CALON SISWA BARU , UNTUK MELAKUKAN PENDAFTARAN SILAHKAN MELAKUKAN REGISTRASI TERLEBIH DAHULU
           </h2>
           <br/>
-          <a class="btn btn-info" href="/sekolah">DAFTAR SEKARANG</a>
+          <a class="btn btn-info" href="/daftar-sekolah">DAFTAR SEKARANG</a>
           
       </div>
             <!-- Earnings (Monthly) Card Example -->

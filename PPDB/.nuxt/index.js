@@ -60,7 +60,7 @@ async function createApp (ssrContext) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"PPDB","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"My fantabulous Nuxt.js project"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"}],"style":[],"script":[]},
+    head: {"title":"PPDB","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"My fantabulous Nuxt.js project"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"}],"script":[{"src":"\u002Fvendor\u002Fjquery\u002Fjquery.min.js","body":true},{"src":"\u002Fvendor\u002Fbootstrap\u002Fjs\u002Fbootstrap.bundle.min.js","body":true},{"src":"\u002Fjs\u002Fsb-admin-2.min.js","body":true},{"src":"\u002Fvendor\u002Fchart.js\u002FChart.min.js","body":true}],"style":[]},
 
     store,
     router,

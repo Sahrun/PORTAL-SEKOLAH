@@ -15,10 +15,14 @@ import '..\\assets\\css\\sb-admin-2.min.css'
 
 import '..\\assets\\vendor\\fontawesome-free\\css\\all.min.css'
 
+import '..\\assets\\vendor\\dataTables.bootstrap4.min.css'
+
+import _77068119 from '..\\layouts\\admin.vue'
 import _6f6c098b from '..\\layouts\\default.vue'
 import _230840c8 from '..\\layouts\\partials\\nav.vue'
+import _c53b4556 from '..\\layouts\\partials\\sidebar.vue'
 
-const layouts = { "_default": sanitizeComponent(_6f6c098b),"_partials/nav": sanitizeComponent(_230840c8) }
+const layouts = { "_admin": sanitizeComponent(_77068119),"_default": sanitizeComponent(_6f6c098b),"_partials/nav": sanitizeComponent(_230840c8),"_partials/sidebar": sanitizeComponent(_c53b4556) }
 
 export default {
   render (h, props) {

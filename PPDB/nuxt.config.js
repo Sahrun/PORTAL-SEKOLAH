@@ -14,6 +14,12 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href:'https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i'}
+    ],
+    script: [
+      { src: "/vendor/jquery/jquery.min.js", body: true  },
+      { src: "/vendor/bootstrap/js/bootstrap.bundle.min.js", body: true  },
+      { src: "/js/sb-admin-2.min.js", body: true  },
+      { src: "/vendor/chart.js/Chart.min.js", body: true  }
     ]
   },
   
@@ -38,13 +44,14 @@ export default {
   */
   css: [
     '@/assets/css/sb-admin-2.min.css',
-    '@/assets/vendor/fontawesome-free/css/all.min.css'
+    '@/assets/vendor/fontawesome-free/css/all.min.css',
+    '@/assets/vendor/dataTables.bootstrap4.min.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/api/init.js'
+    '~/api/init.js',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -65,6 +72,6 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-    }
+    },
   }
 }

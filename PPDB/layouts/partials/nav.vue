@@ -19,7 +19,7 @@
             </div>
           </form> -->
           <ul>
-              <h2>PPBB</h2>
+              <h2>PPDB</h2>
           </ul>
 
           <!-- Topbar Navbar -->

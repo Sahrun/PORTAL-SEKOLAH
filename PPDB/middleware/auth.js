@@ -28,6 +28,8 @@ export default function ({store, redirect, route}) {
              }else if(store.state.auth.user.is_complete == null && store.state.auth.user.current_step !== null && route.fullPath !== "/pendaftaran/daftar"){
               return redirect('/pendaftaran/daftar')
              }
+        }else if(store.state.auth.user.role == "user"){
+            // return redirect('/dashboard')
         }
       }
     }
