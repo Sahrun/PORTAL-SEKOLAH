@@ -90,6 +90,7 @@ export default {
                       this.$router.push('/');
                    }
                   }).catch(error => {
+                    console.log(error);
                     this.$store.dispatch('layout/load',false);
                     if(error.response.status){
                       this.error.password ="password salah"

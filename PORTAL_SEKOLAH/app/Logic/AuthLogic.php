@@ -22,12 +22,15 @@ class AuthLogic
     public function register_user($data){
 
         $user = New User;
-        $user::create([
-              'name' => $data->name,
-              'email' => $data->email,
-              'user_name' => $data->email,
-              'password' => bcrypt($data->password)
-          ]);
+        
+        $user->name = $data->name;
+        $user->email = $data->email;
+        $user->user_name = $data->email;
+        $user->password = bcrypt($data->password);
+
+        $user->save();
+
+        return $user;
     }
 
     public function register_ppdb($data){
@@ -52,9 +55,12 @@ class AuthLogic
          $tokenResult = $user->createToken('Personal Access Token');
 
          $token = $tokenResult->token;
-
-         if ($request->remember_me)
+         
+         if ($request->remember_me){
             $token->expires_at = Carbon::now()->addWeeks(1);
+         }else{
+            $token->expires_at = Carbon::now()->addDays(1);
+         }
 
          $token->save();
        

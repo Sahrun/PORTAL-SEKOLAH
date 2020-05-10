@@ -14,5 +14,11 @@ export default {
     initial_parameter: () => axios.get('ppdb/initial-parameter'),
     info_user: () => axios.get('ppdb/info-user'),
     resume_save: (data) => axios.post('ppdb/resume-save',data,{headers: {'Content-Type': 'multipart/form-data'}}),
+  },
+  param:{
+    status_sekolah:()  => axios.get('param/status-sekolah')
+  },
+  sekolah:{
+    register:(data) => axios.post('sekolah/register',data)
   }
 }

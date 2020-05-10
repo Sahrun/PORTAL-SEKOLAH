@@ -39,6 +39,11 @@
           <i class="fa fa-database"></i>
           <span>Kelola Data Siswa</span></a>
       </li>
+      <li class="nav-item" id="registrasi-sekolah">
+        <a class="nav-link" href="/registrasi-sekolah">
+          <i class="fa fa-file"></i>
+          <span>Registrasi Sekolah</span></a>
+      </li>
 
       <!-- Divider -->
       <!-- <hr class="sidebar-divider"> -->

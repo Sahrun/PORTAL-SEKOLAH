@@ -8,6 +8,7 @@ const _307bc354 = () => interopDefault(import('..\\pages\\daftar-sekolah.vue' /*
 const _01923fbc = () => interopDefault(import('..\\pages\\dashboard.vue' /* webpackChunkName: "pages_dashboard" */))
 const _313ccbde = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
 const _554e0daa = () => interopDefault(import('..\\pages\\register.vue' /* webpackChunkName: "pages_register" */))
+const _749e62e2 = () => interopDefault(import('..\\pages\\registrasi-sekolah\\index.vue' /* webpackChunkName: "pages_registrasi-sekolah_index" */))
 const _252f2bdc = () => interopDefault(import('..\\pages\\siswa-baru\\index.vue' /* webpackChunkName: "pages_siswa-baru_index" */))
 const _0a63539d = () => interopDefault(import('..\\pages\\walikelas\\index.vue' /* webpackChunkName: "pages_walikelas_index" */))
 const _2ac73af4 = () => interopDefault(import('..\\pages\\about\\detail.vue' /* webpackChunkName: "pages_about_detail" */))
@@ -17,6 +18,7 @@ const _c8469118 = () => interopDefault(import('..\\pages\\data-siswa\\daftar-nil
 const _acd1f750 = () => interopDefault(import('..\\pages\\data-siswa\\moodle-format.vue' /* webpackChunkName: "pages_data-siswa_moodle-format" */))
 const _7048b1e6 = () => interopDefault(import('..\\pages\\pendaftaran\\daftar.vue' /* webpackChunkName: "pages_pendaftaran_daftar" */))
 const _709b7448 = () => interopDefault(import('..\\pages\\pendaftaran\\details.vue' /* webpackChunkName: "pages_pendaftaran_details" */))
+const _8e830ed2 = () => interopDefault(import('..\\pages\\registrasi-sekolah\\form.vue' /* webpackChunkName: "pages_registrasi-sekolah_form" */))
 const _486ff836 = () => interopDefault(import('..\\pages\\sekolah\\guru.vue' /* webpackChunkName: "pages_sekolah_guru" */))
 const _7a72045d = () => interopDefault(import('..\\pages\\sekolah\\jurusan.vue' /* webpackChunkName: "pages_sekolah_jurusan" */))
 const _3cb34dcf = () => interopDefault(import('..\\pages\\sekolah\\kelas.vue' /* webpackChunkName: "pages_sekolah_kelas" */))
@@ -62,6 +64,10 @@ export const routerOptions = {
     component: _554e0daa,
     name: "register"
   }, {
+    path: "/registrasi-sekolah",
+    component: _749e62e2,
+    name: "registrasi-sekolah"
+  }, {
     path: "/siswa-baru",
     component: _252f2bdc,
     name: "siswa-baru"
@@ -97,6 +103,10 @@ export const routerOptions = {
     path: "/pendaftaran/details",
     component: _709b7448,
     name: "pendaftaran-details"
+  }, {
+    path: "/registrasi-sekolah/form",
+    component: _8e830ed2,
+    name: "registrasi-sekolah-form"
   }, {
     path: "/sekolah/guru",
     component: _486ff836,

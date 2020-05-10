@@ -53,3 +53,23 @@ Route::group([
         Route::get('info-user','Api\PPDB\PPDBController@current_data');
     });
 });
+
+Route::group([
+    'prefix' => 'param'
+], function () {
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('status-sekolah','Api\General\ParameterController@status_sekolah');
+    });
+});
+
+Route::group([
+    'prefix' => 'sekolah'
+], function () {
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::post('register','Api\Sekolah\RegistrasiSekolahController@register');
+    });
+});

@@ -24,7 +24,7 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed'
         ]);
 
-        $this->logic->register_user($request);
+        $user = $this->logic->register_user($request);
 
         return response()->json([
             'message' => 'Successfully created user!'
