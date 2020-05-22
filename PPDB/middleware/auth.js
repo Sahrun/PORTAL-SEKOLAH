@@ -21,7 +21,7 @@ export default function ({store, redirect, route}) {
              else if(store.state.auth.user.is_complete == null && store.state.auth.user.current_step == null)
              {
               if((route.fullPath !== "/pendaftaran/details" || route.fullPath !== "/pendaftaran/edit")
-                 && route.fullPath !== "/" && route.fullPath !== "/pendaftaran/daftar" && route.fullPath !== "/sekolah")
+                 && route.fullPath !== "/" && route.fullPath !== "/pendaftaran/daftar" && route.fullPath !== "/daftar-sekolah")
               {
                 return redirect('/')
               }

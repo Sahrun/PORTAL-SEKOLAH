@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                <div class="card shadow mb-4">
             <div class="card-header">
-              <h6 class="m-0 font-weight-bold text-primary inline-block">Data Guru</h6>
+              <h6 class="m-0 font-weight-bold text-primary inline-block">Data Wali Kelas</h6>
               <div class="inline-block btn-left text-right">
                 <button class="btn btn-primary btn-sm" @click="add">Tambah Data</button>
               </div>
@@ -119,6 +119,6 @@ export default {
     display: inline-block;
 }
 .btn-left{
-    width: 91%;
+    width: 87%;
 }
 </style>
