@@ -96,5 +96,9 @@ class AuthLogic
 
         return $user;
     }
+    public function get_user_by_id($id){
+        $user = Users::find($id);
+        return $user;
+    }
 
 }

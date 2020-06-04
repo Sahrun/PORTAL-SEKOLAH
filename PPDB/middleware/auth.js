@@ -11,7 +11,17 @@ export default function ({store, redirect, route}) {
         return redirect('/')
       }
       else{
-         if(store.state.auth.user.role == "calon_siswa")
+        var path = route.fullPath
+        if(path !== "/"){
+            path = path.replace(/^\/|\/$/g, '')
+            var splitPath = path.split("/")
+            if(splitPath.length)
+            {
+              path = splitPath[0]
+            }
+        }
+
+        if(store.state.auth.user.role == "calon_siswa")
          {
            if(store.state.auth.user.is_complete == true
              && (route.fullPath !== "/pendaftaran/details" && route.fullPath !== "/pendaftaran/edit"))
@@ -28,8 +38,14 @@ export default function ({store, redirect, route}) {
              }else if(store.state.auth.user.is_complete == null && store.state.auth.user.current_step !== null && route.fullPath !== "/pendaftaran/daftar"){
               return redirect('/pendaftaran/daftar')
              }
-        }else if(store.state.auth.user.role == "user"){
-            // return redirect('/dashboard')
+        }else if(store.state.auth.isAdmin){
+            return redirect('/dashboard')
+        }else if(store.state.auth.isSuperAdmin)
+        {
+          if(path !== 'registrasi-sekolah')
+          {
+             return redirect('/registrasi-sekolah');
+          }
         }
       }
     }

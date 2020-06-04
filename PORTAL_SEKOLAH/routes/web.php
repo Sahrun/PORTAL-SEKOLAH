@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group([
+    'prefix' => 'pendaftaran'
+], function () {
+    Route::group([
+    ], function() {
+        Route::get('print/{id_user}','Api\PPDB\PPDBController@print');
+    });
+});

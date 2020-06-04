@@ -24,6 +24,7 @@ const _7a72045d = () => interopDefault(import('..\\pages\\sekolah\\jurusan.vue' 
 const _3cb34dcf = () => interopDefault(import('..\\pages\\sekolah\\kelas.vue' /* webpackChunkName: "pages_sekolah_kelas" */))
 const _2288a4e9 = () => interopDefault(import('..\\pages\\sekolah\\pelajaran.vue' /* webpackChunkName: "pages_sekolah_pelajaran" */))
 const _493b1e34 = () => interopDefault(import('..\\pages\\sekolah\\profile.vue' /* webpackChunkName: "pages_sekolah_profile" */))
+const _c7caeaa6 = () => interopDefault(import('..\\pages\\registrasi-sekolah\\edit\\_id.vue' /* webpackChunkName: "pages_registrasi-sekolah_edit__id" */))
 const _1db9f6fa = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 const _267c5364 = () => interopDefault(import('..\\pages\\pendaftaran\\daftar' /* webpackChunkName: "" */))
 
@@ -127,6 +128,10 @@ export const routerOptions = {
     path: "/sekolah/profile",
     component: _493b1e34,
     name: "sekolah-profile"
+  }, {
+    path: "/registrasi-sekolah/edit/:id",
+    component: _c7caeaa6,
+    name: "registrasi-sekolah-edit-id"
   }, {
     path: "/",
     component: _1db9f6fa,

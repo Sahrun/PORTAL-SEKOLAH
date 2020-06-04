@@ -8,6 +8,7 @@ use App\PPDBCalonSiswa;
 
 use File;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class PPDBLogic
 {
@@ -321,5 +322,12 @@ class PPDBLogic
     public function ppdb_information($id){
         $ppdb =  $this->repo->ppdb_information($id);
         return $ppdb;
+    }
+
+    public function print($id_user){
+        $curent_user = $this->auth->get_user_by_id($id_user);
+        $calon_siswa = $this->repo->get_ppdb_user_by_id($curent_user->id_user);
+        $pdf = PDF::loadview('PPDB/print');
+	    return $pdf->download('resume.pdf');
     }
 }

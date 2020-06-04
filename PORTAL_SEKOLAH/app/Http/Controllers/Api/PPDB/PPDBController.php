@@ -83,4 +83,8 @@ class PPDBController extends Controller
     {
         //
     }
+    public function print($id_user){
+        
+        return $this->logic->print($id_user);
+    }
 }

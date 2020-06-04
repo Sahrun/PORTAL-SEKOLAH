@@ -19,382 +19,11 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade" v-bind:class="{ show : step==1, active: step==1}" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <div class="col-xl-12 col-md-12 mb-12">
-                            <div class="card border-left-primary shadow h-100   py-2">
-                                <div class="card-body">
-                                    <div novalidate>
-                                        <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Nama Lengkap</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <input type="text" class="form-control" id="validationCustom01" required 
-                                                v-bind:class="{
-                                                   'is-invalid' : (error.data_diri.nama_lengkap && issubmit), 
-                                                   'is-valid' : (!error.data_diri.nama_lengkap && issubmit)
-                                                   }"
-                                               @change="error.data_diri.nama_lengkap=''"
-                                                v-model="data_diri.nama_lengkap" >
-                                                <span class="small">Sesuai Ijazah Sebelumnya</span>
-                                                <div class="invalid-feedback">
-                                                    {{error.data_diri.nama_lengkap}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                               <label for="validationCustom03">Tempat TGL</label> 
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label for="validationCustom03">Tempat</label>
-                                                <input type="text" class="form-control" id="validationCustom03" required
-                                                v-model="data_diri.tempat_lahir"
-                                                v-bind:class="{
-                                                    'is-invalid' : (error.data_diri.tempat_lahir && issubmit),
-                                                    'is-valid' : (!error.data_diri.tempat_lahir && issubmit) 
-                                                    }"
-                                                @change="error.data_diri.tempat_lahir=''">
-                                                <div class="invalid-feedback">
-                                                    {{error.data_diri.tempat_lahir}}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 mb-2">
-                                                <label for="validationCustom04">Tanggal</label>
-                                                <select class="form-control" id="exampleFormControlSelect1"
-                                                v-model="data_diri.tgl_lahir"
-                                                v-bind:class="{
-                                                    'is-invalid' : (error.data_diri.tgl_lahir && issubmit),
-                                                    'is-valid' : (!error.data_diri.tgl_lahir && issubmit)
-                                                }"
-                                                @change="error.data_diri.tgl_lahir=''">
-                                                    <option value="">-Pilih-</option>
-                                                      <option v-for="tgl in parameter.tanggal" v-bind:value="tgl" :key="tgl">
-                                                        {{ tgl }}
-                                                    </option>
-                                                 </select>
-                                                <div class="invalid-feedback">
-                                                     {{error.data_diri.tgl_lahir}}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 mb-2">
-                                                <label for="validationCustom05">Bulan</label>
-                                                <select class="form-control" id="exampleFormControlSelect1"
-                                                v-bind:class="{
-                                                    'is-invalid' : (error.data_diri.bln_lahir && issubmit),
-                                                    'is-valid' : (!error.data_diri.bln_lahir && issubmit)
-                                                     }"
-                                                @change="error.data_diri.bln_lahir=''"
-                                                v-model="data_diri.bln_lahir">
-                                                     <option value="">-Pilih-</option>
-                                                      <option v-for="bln in parameter.bulan" v-bind:value="bln" :key="bln">
-                                                        {{ bln }}
-                                                    </option>
-                                                 </select>
-                                                <div class="invalid-feedback">
-                                                     {{error.data_diri.bln_lahir}}
-                                                </div>
-                                            </div>
-                                             <div class="col-md-2 mb-2">
-                                                <label for="validationCustom05">Tahun</label>
-                                                <select class="form-control" id="exampleFormControlSelect1"
-                                                v-bind:class="{
-                                                    'is-invalid' : (error.data_diri.thn_lahir && issubmit),
-                                                    'is-valid' : (!error.data_diri.thn_lahir && issubmit)  
-                                                }"
-                                                @change="error.data_diri.thn_lahir=''"
-                                                v-model="data_diri.thn_lahir">
-                                                      <option value="">-Pilih-</option>
-                                                      <option v-for="thn in parameter.tahun" v-bind:value="thn" :key="thn">
-                                                        {{ thn }}
-                                                    </option>
-                                                 </select>
-                                                <div class="invalid-feedback">
-                                                    {{error.data_diri.thn_lahir}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                      <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Jenis Kelamin</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                 <select class="form-control" id="exampleFormControlSelect1"
-                                                 v-model="data_diri.jenis_kelamin"
-                                                 v-bind:class="{
-                                                     'is-invalid' : (error.data_diri.jenis_kelamin && issubmit),
-                                                     'is-valid' : (!error.data_diri.jenis_kelamin && issubmit) 
-                                                 }"
-                                                 @change="error.data_diri.jenis_kelamin=''">
-                                                    <option>Laki-Laki</option>
-                                                    <option>Perempuan</option>
-                                                 </select>
-                                                <div class="invalid-feedback">
-                                                     {{error.data_diri.jenis_kelamin}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                         <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Agama</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <select class="form-control" id="exampleFormControlSelect1"
-                                                v-model="data_diri.agama_id"
-                                                v-bind:class="{
-                                                    'is-invalid' : (error.data_diri.agama_id && issubmit),
-                                                    'is-valid' : (!error.data_diri.agama_id && issubmit)
-                                                }"
-                                                 @change="error.data_diri.agama_id='';setAgama()">
-                                                    <option value="">-Pilih-</option>
-                                                    <option v-for="agm in parameter.agama" v-bind:value="agm.id" :key="agm.id">
-                                                        {{ agm.nama }}
-                                                    </option>
-                                                 </select>
-                                                <div class="invalid-feedback">
-                                                     {{error.data_diri.agama_id}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                         <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Alamat</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <textarea class="form-control" required v-model="data_diri.alamat"
-                                                v-bind:class="{
-                                                    'is-invalid' : (error.data_diri.alamat && issubmit),
-                                                    'is-valid' : (!error.data_diri.alamat && issubmit)
-                                                 }"
-                                                 @change="error.data_diri.alamat=''"></textarea>
-                                                <div class="invalid-feedback">
-                                                     {{error.data_diri.alamat}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                         <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Telepon</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <input type="text" class="form-control" id="validationCustom01" required
-                                                v-model="data_diri.telepon"
-                                                v-bind:class="{
-                                                    'is-invalid' : (error.data_diri.telepon && issubmit),
-                                                    'is-valid' : (!error.data_diri.telepon && issubmit)
-                                                }"
-                                                 @change="error.data_diri.telepon=''">
-                                                <div class="invalid-feedback">
-                                                    {{error.data_diri.telepon}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                          <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Foto</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <div>
-                                                    <img v-bind:src="URLImage" class="img-thumbnail">
-                                                </div>
-                                                <input type="file" class="form-control" id="" accept='image/*' @change="read_file($event)"
-                                                v-bind:class="{
-                                                    'is-invalid' : error.data_diri.foto
-                                                }">
-                                                <span class="small">* Foto ukuran 4 x 6 dengan format jpg max size 2 Mb</span>
-                                                 <div class="invalid-feedback">
-                                                    {{error.data_diri.foto}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" v-bind:class="{ show : step==2, active: step==2}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <div class="col-xl-12 col-md-12 mb-12">
-                            <div class="card border-left-success shadow h-100   py-2">
-                                <div class="card-body">
-                                     <div novalidate>
-                                        <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Nama Ayah</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <input type="text" class="form-control" id="validationCustom01" required
-                                                v-model="data_keluarga.nama_ayah"
-                                                v-bind:class="{
-                                                   'is-invalid' : (error.data_keluarga.nama_ayah && issubmit), 
-                                                   'is-valid' : (!error.data_keluarga.nama_ayah && issubmit)
-                                                   }"
-                                                @change="error.data_keluarga.nama_ayah=''">
-                                                <div class="invalid-feedback">
-                                                     {{error.data_keluarga.nama_ayah}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                      <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Nama Ibu</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                  <input type="text" class="form-control" id="validationCustom01" required
-                                                  v-model="data_keluarga.nama_ibu"
-                                                  v-bind:class="{
-                                                   'is-invalid' : (error.data_keluarga.nama_ibu && issubmit), 
-                                                   'is-valid' : (!error.data_keluarga.nama_ibu && issubmit)
-                                                   }"
-                                                @change="error.data_keluarga.nama_ibu=''">
-                                                <div class="invalid-feedback">
-                                                     {{error.data_keluarga.nama_ibu}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                         <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Pekerjaan Ayah</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <input type="text" class="form-control" id="validationCustom01" required
-                                                v-model="data_keluarga.pekerjaan_ayah"
-                                                v-bind:class="{
-                                                   'is-invalid' : (error.data_keluarga.pekerjaan_ayah && issubmit), 
-                                                   'is-valid' : (!error.data_keluarga.pekerjaan_ayah && issubmit)
-                                                   }"
-                                                @change="error.data_keluarga.pekerjaan_ayah=''">
-                                                <div class="invalid-feedback">
-                                                     {{error.data_keluarga.pekerjaan_ayah}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                         <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Pekerjaan Ibu</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                               <input type="text" class="form-control" id="validationCustom01" required
-                                               v-model="data_keluarga.pekerjaan_ibu"
-                                               v-bind:class="{
-                                                   'is-invalid' : (error.data_keluarga.pekerjaan_ibu && issubmit), 
-                                                   'is-valid' : (!error.data_keluarga.pekerjaan_ibu && issubmit)
-                                                   }"
-                                                @change="error.data_keluarga.pekerjaan_ibu=''">
-                                                <div class="invalid-feedback">
-                                                     {{error.data_keluarga.pekerjaan_ibu}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                         <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Penghasilan Pe</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <input type="number" class="form-control" id="validationCustom01" required
-                                                v-model="data_keluarga.penghasilan"
-                                                v-bind:class="{
-                                                   'is-invalid' : (error.data_keluarga.penghasilan && issubmit), 
-                                                   'is-valid' : (!error.data_keluarga.penghasilan && issubmit)
-                                                   }"
-                                                @change="error.data_keluarga.penghasilan=''">
-                                                <div class="invalid-feedback">
-                                                     {{error.data_keluarga.penghasilan}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" v-bind:class="{ show : step==3, active: step==3}" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                        <div class="col-xl-12 col-md-12 mb-12">
-                            <div class="card border-left-warning shadow h-100   py-2">
-                                <div class="card-body">
-                                    <div class="" novalidate>
-                                        <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Asal Sekolah</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <input type="text" class="form-control" id="validationCustom01" required
-                                                v-model="asal_sekolah.nama_sekolah"
-                                                v-bind:class="{
-                                                   'is-invalid' : (error.asal_sekolah.nama_sekolah && issubmit), 
-                                                   'is-valid' : (!error.asal_sekolah.nama_sekolah && issubmit)
-                                                   }"
-                                                @change="error.asal_sekolah.nama_sekolah=''">
-                                                <div class="invalid-feedback">
-                                                    {{error.asal_sekolah.nama_sekolah}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                      <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Alamat Sekolah</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <textarea class="form-control" required
-                                                v-model="asal_sekolah.alamat_sekolah"
-                                                v-bind:class="{
-                                                   'is-invalid' : (error.asal_sekolah.alamat_sekolah && issubmit), 
-                                                   'is-valid' : (!error.asal_sekolah.alamat_sekolah && issubmit)
-                                                   }"
-                                                @change="error.asal_sekolah.alamat_sekolah=''"></textarea>
-                                                <div class="invalid-feedback">
-                                                   {{error.asal_sekolah.alamat_sekolah}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                         <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">NPSN Sekolah</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <input type="text" class="form-control" id="validationCustom01" required
-                                                v-model="asal_sekolah.npsn"
-                                                v-bind:class="{
-                                                   'is-invalid' : (error.asal_sekolah.npsn && issubmit), 
-                                                   'is-valid' : (!error.asal_sekolah.npsn && issubmit)
-                                                   }"
-                                                @change="error.asal_sekolah.npsn=''">
-                                                <div class="invalid-feedback">
-                                                    {{error.asal_sekolah.npsn}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                         <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Telepon</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                               <input type="text" class="form-control" id="validationCustom01" required
-                                               v-model="asal_sekolah.telepon">
-                                            </div>
-                                        </div>
-                                         <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                            <label for="validationCustom01">Nomor SKHUN</label>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <input type="text" class="form-control" id="validationCustom01" required
-                                                v-model="asal_sekolah.skhun"
-                                                v-bind:class="{
-                                                   'is-invalid' : (error.asal_sekolah.skhun && issubmit), 
-                                                   'is-valid' : (!error.asal_sekolah.skhun && issubmit)
-                                                   }"
-                                                   @change="error.asal_sekolah.skhun=''">
-                                                <div class="invalid-feedback">
-                                                    {{error.asal_sekolah.skhun}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" v-bind:class="{ show : step==4, active: step==4}" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <Step1 :data_diri="data_diri" :error="error" :parameter="parameter" :step="step" :issubmit="issubmit" :URLImage="URLImage"/>
+                    <Step2 :data_keluarga="data_keluarga" :error="error" :step="step" :issubmit="issubmit" />
+                    <Step3 :asal_sekolah="asal_sekolah" :error="error" :step="step" :issubmit="issubmit" />
+                    <Step4 :data_diri="data_diri" :data_keluarga="data_keluarga" :asal_sekolah="asal_sekolah" :error="error" :step="step" :issubmit="issubmit" :URLImage="URLImage" />
+                    <!-- <div class="tab-pane fade" v-bind:class="{ show : step==4, active: step==4}" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                         <div class="col-xl-12 col-md-12 mb-12">
                             <div class="card border-left-info shadow h-100   py-2">
                                 <div class="card-body">
@@ -516,18 +145,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <div style="padding-top:10px;padding-bottom:10px;" class="text-right">
-                    <button class="btn btn-secondary" @click="back" v-if="step != 1">Kembali</button>
-                    <button class="btn btn-success" @click="lanjut" v-if="step != 4">Lanjut</button>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <div style="padding-top:10px;padding-bottom:10px;" class="text-right">
-                    <button class="btn btn-primary" @click="simpan">Simpan</button>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -536,7 +154,18 @@
 
 <script>
 import api from '../../api';
+import Step1 from '../../components/pendaftaran/step1'
+import Step2 from '../../components/pendaftaran/step2'
+import Step3 from '../../components/pendaftaran/step3'
+import Step4 from '../../components/pendaftaran/step4'
+
 export default {
+    components:{
+        Step1,
+        Step2,
+        Step3,
+        Step4
+    },
     async asyncData({ query, error }) {
         let [parameter,info] = await Promise.all([
             api.ppdb.initial_parameter(),
@@ -750,7 +379,7 @@ export default {
                 isvalid = false;
             }
             if(!this.data_diri.agama_id){
-                this.error.data_diri.agama_id="agama_id harus diisi"
+                this.error.data_diri.agama_id="agama harus diisi"
                 isvalid = false;
             }
             if(!this.data_diri.alamat){

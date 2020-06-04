@@ -185,7 +185,8 @@
                             <div class="form-row">
                                 <div class="col-md-12 mb-3 text-right">
                                     <button class="btn btn-primary btn-sm" type="submit" :disabled="isproses">Submit</button>
-                                    <button class="btn btn-danger btn-sm" type="button">Cancel</button>
+                                    <!-- <button class="btn btn-danger btn-sm" type="button">Cancel</button> -->
+                                    <nuxt-link :to="`/registrasi-sekolah`" class="btn btn-danger btn-sm">Cancel</nuxt-link>
                                 </div>
                             </div>
                         </div>
@@ -235,24 +236,32 @@ export default {
         }
     },
     async asyncData({ query, error }) {
-        let [status] = await Promise.all([
+       
+    },
+    created(){
+        this.$store.dispatch('layout/load',true);
+        Promise.all([
             api.param.status_sekolah(),
-          ])
-        return {
-          param:{
-              status : status.data
-          }
-        }
+        ]).then(response =>{
+             this.$store.dispatch('layout/load',false);
+             this.param.status = response[0].data
+        }).catch(e => {
+             this.$store.dispatch('layout/load',false);
+        });
+
     },
     methods:{
         submit(){
             this.issubmit = true;
             var validate = this.validate();
             if(validate){
+                this.$store.dispatch('layout/load',true);
                 this.isproses = true;
                 api.sekolah.register(this.form).then(res => {
                     this.issubmit = false;
                     this.isproses = false;
+                    this.$store.dispatch('layout/load',false);
+                    this.$router.push('/registrasi-sekolah/');
                 }).catch(err => {
                     if(err.response.status == 422){
                         alert(err.response.data.message);
@@ -266,6 +275,7 @@ export default {
                         alert(err.response.data.exception);
                     }
                     this.isproses = false;
+                    this.$store.dispatch('layout/load',false);
                 })
             }
         },

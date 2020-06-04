@@ -69,7 +69,7 @@
     text-align: center;
     padding-top: 25%;
     /* opacity: .80; */
-    opacity:  1;
+    opacity:  0.8;
   }
   .overlay-hide{
     display: none;

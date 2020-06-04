@@ -1,14 +1,23 @@
 import api from '~/api'
 import {setAuthToken, resetAuthToken} from '~/utils/auth'
 import cookies from 'js-cookie'
+import {superAdmin,admin} from '~/config'
 export const state = () => ({
   user: null,
-  isLogin:null
+  isLogin:null,
+  isSuperAdmin:false,
+  isAdmin:false,
 })
 export const mutations = {
   set_user (store, data) {
     store.user = data
     store.isLogin = true
+    if(data.role == superAdmin){
+      store.isSuperAdmin = true;
+    }
+    if(data.role == admin){
+      store.isAdmin = true
+    }
   },
   reset_user (store) {
     store.user = null

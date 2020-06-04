@@ -19,6 +19,9 @@ export default {
     status_sekolah:()  => axios.get('param/status-sekolah')
   },
   sekolah:{
-    register:(data) => axios.post('sekolah/register',data)
+    register:(data) => axios.post('sekolah/register',data),
+    grid:(param) => axios.get('sekolah/grid?'+param+''),
+    by_id:(id) => axios.get('sekolah/by-id/'+id),
+    update:(data) => axios.post('sekolah/update/',data)
   }
 }

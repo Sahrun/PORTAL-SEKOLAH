@@ -14,6 +14,7 @@ class Sekolah extends Model
      * @var array
      */
     protected $fillable = [
-        'nama_sekolah','alamat','provinsi','kota','status','npsn','email','created_by','modified_by'
+        'nama_sekolah','alamat','provinsi','kota','status','npsn','email','created_by','modified_by','user_admin'
     ];
+    
 }

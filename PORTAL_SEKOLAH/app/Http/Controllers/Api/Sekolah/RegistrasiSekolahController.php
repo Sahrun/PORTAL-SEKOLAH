@@ -22,8 +22,18 @@ class RegistrasiSekolahController extends Controller
         $this->logic = $_logic;
     }
 
-    public function register(Request $request ){
+    public function register(Request $request){
         return $this->logic->register($request);
     }
-    
+
+    public function grid(Request $request){
+        return $this->logic->grid($request);
+    }
+    public function byId($id){
+        return $this->logic->byId($id);
+    }
+
+    public function update(Request $request){
+        return $this->logic->update($request);
+    }
 }

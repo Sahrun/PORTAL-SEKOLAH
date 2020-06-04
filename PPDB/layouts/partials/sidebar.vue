@@ -12,34 +12,34 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item" id="dashboard">
+      <li class="nav-item" id="dashboard" v-if="$store.state.auth.isAdmin">
         <a class="nav-link" href="/dashboard">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Dashboard</span></a>
       </li>
 
-      <li class="nav-item" id="sekolah">
+      <li class="nav-item" id="sekolah" v-if="$store.state.auth.isAdmin">
         <a class="nav-link" href="/sekolah/guru">
           <i class="fas fa-fw fa-graduation-cap"></i>
           <span>Sekolah</span></a>
       </li>
       
-      <li class="nav-item" id="walikelas">
+      <li class="nav-item" id="walikelas" v-if="$store.state.auth.isAdmin">
         <a class="nav-link" href="/walikelas/">
           <i class="fa fa-address-card"></i>
           <span>Data Wali Kelas</span></a>
       </li>
-      <li class="nav-item" id="siswa-baru">
+      <li class="nav-item" id="siswa-baru" v-if="$store.state.auth.isAdmin">
         <a class="nav-link" href="/siswa-baru/">
           <i class="fa fa-users"></i>
           <span>Siswa Baru</span></a>
       </li>
-      <li class="nav-item" id="data-siswa">
+      <li class="nav-item" id="data-siswa" v-if="$store.state.auth.isAdmin">
         <a class="nav-link" href="/data-siswa/absensi/">
           <i class="fa fa-database"></i>
           <span>Kelola Data Siswa</span></a>
       </li>
-      <li class="nav-item" id="registrasi-sekolah">
+      <li class="nav-item" id="registrasi-sekolah" v-if="$store.state.auth.isSuperAdmin">
         <a class="nav-link" href="/registrasi-sekolah">
           <i class="fa fa-file"></i>
           <span>Registrasi Sekolah</span></a>

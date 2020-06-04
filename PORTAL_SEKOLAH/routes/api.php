@@ -71,5 +71,8 @@ Route::group([
       'middleware' => 'auth:api'
     ], function() {
         Route::post('register','Api\Sekolah\RegistrasiSekolahController@register');
+        Route::get('grid','Api\Sekolah\RegistrasiSekolahController@grid');
+        Route::get('by-id/{id}','Api\Sekolah\RegistrasiSekolahController@byId');
+        Route::post('update','Api\Sekolah\RegistrasiSekolahController@update');
     });
 });
