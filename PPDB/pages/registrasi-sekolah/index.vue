@@ -120,7 +120,7 @@ export default {
               this.filter.order_by = 'asc'
           }
           this.RefrashData();
-      }
+    }
     }
 }
 </script>

@@ -84,7 +84,7 @@ export default {
               this.$store.dispatch('layout/load',true);
               this.$store.dispatch('auth/login',this.user).then(result => {
                 this.$store.dispatch('layout/load',false);
-                   if(this.$store.state.auth.user.role == "user"){
+                   if(this.$store.state.auth.isAdmin){
                       this.$router.push('/dashboard');
                    }else{
                       this.$router.push('/');

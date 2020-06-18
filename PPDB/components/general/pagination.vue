@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-sm-12 col-md-5">
         <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
-            Showing {{filter.page}} to {{(filter.show * (filter.page - 1)) + filter.count}} of {{filter.count_data}} entries
+            Showing {{filter.page}} to {{(filter.show * (filter.page - 1)) + filter.count}} of {{filter.count_data}} entries 
             </div>
         </div>
     <div class="col-sm-12 col-md-7">

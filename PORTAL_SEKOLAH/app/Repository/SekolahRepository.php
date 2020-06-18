@@ -42,4 +42,10 @@ class SekolahRepository
 
         return $result;
     }
+    public function profile($id){
+
+        $sekolah = new Sekolah;
+        $result = $sekolah::find($id);
+        return $result;
+    }
 }

@@ -13,89 +13,231 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length"><label>Show <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                 <FilterTop :filter="filter" />
+                <div class="row">
+                <div class="col-sm-12">
+                  <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                   <thead>
                      <tr role="row">
-                        <th>#</th>
-                        <th><input type="text" class="form-control" placeholder="Nama Jurusan"/></th>
-                        <th><textarea class="form-control" placeholder="Keterangan" rows="1"></textarea></th>
-                        <th><button class="btn btn-primary btn-sm">Tambah</button></th>
+                        <th style="vertical-align: top">#</th>
+                        <th style="vertical-align: top">
+                            <input type="text" class="form-control" 
+                            placeholder="Nama Jurusan" 
+                            v-model="form.nama"
+                            @change="error.nama=''"
+                            v-bind:class="{
+                                        'is-invalid' : (error.nama && issubmit), 
+                                        'is-valid' : (!error.nama && issubmit)
+                                        }"/>
+                            <div class="invalid-feedback">{{error.nama}}</div>
+                        </th>
+                        <th style="vertical-align: top">
+                            <textarea class="form-control" placeholder="Keterangan" rows="1" v-model="form.keterangan"></textarea>
+                        </th>
+                        <th style="vertical-align: top"><button class="btn btn-primary btn-sm" @click="save">Tambah</button></th>
                     </tr>
                     <tr role="row">
-                        <th  tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"  style="width: 5px;">No</th>
-                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 233.667px;">Nama Jurusan</th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 60%;">Keterangan</th>
-                        <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" >Aksi</th>
+                        <th style="width: 5px;">No</th>
+                        <th  @click="onSorting('nama')" :class="sorting('nama')" style="width: 233.667px;">Nama Jurusan</th>
+                        <th  @click="onSorting('keterangan')" :class="sorting('keterangan')" style="width: 60%;">Keterangan</th>
+                        <th >Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <tr role="row" class="odd">
-                      <td class="sorting_1">1</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td><button class="btn btn-warning btn-sm">Delete</button></td>
-                    </tr><tr role="row" class="even">
-                      <td class="sorting_1">2</td>
-                      <td>Chief Executive Officer (CEO)</td>
-                      <td>London</td>
-                      <td><button class="btn btn-warning btn-sm">Delete</button></td>
-                    </tr>
-                    <tr role="row" class="odd">
-                      <td class="sorting_1">3</td>
-                      <td>Junior Technical Author</td>
-                      <td>San Francisco</td>
-                     <td><button class="btn btn-warning btn-sm">Delete</button></td>
-                    </tr>
-                    <tr role="row" class="even">
-                      <td class="sorting_1">4</td>
-                      <td>Software Engineer</td>
-                      <td>London</td>
-                      <td><button class="btn btn-warning btn-sm">Delete</button></td>
-                    </tr>
-                    <tr role="row" class="odd">
-                      <td class="sorting_1">5</td>
-                      <td>Software Engineer</td>
-                      <td>San Francisco</td>
-                      <td><button class="btn btn-warning btn-sm">Delete</button></td>
-                    </tr>
-                    <tr role="row" class="even">
-                      <td class="sorting_1">6</td>
-                      <td>Integration Specialist</td>
-                      <td>New York</td>
-                      <td><button class="btn btn-warning btn-sm">Delete</button></td>
+                  <tr role="row" class="odd" v-for="(grd,i) in grid" :key="i">
+                        <td>{{(filter.show * (filter.page - 1))+(i+1)}}</td>
+                        <td>{{grd.nama}}</td>
+                        <td>{{grd.keterangan}}</td>
+                      <td><button class="btn btn-danger btn-sm" @click="onDelete(grd.jurusan_id)">Delete</button></td>
                     </tr>
                     </tbody>
                 </table>
-                </div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+                </div></div>
+                    <Pagination :filter="filter" />
+                  </div>
               </div>
             </div>
           </div>
             </div>
         </div>
-        <Form/>
     </div>
 </template>
 
 <script>
 import Tab from '../../components/sekolah/tabs'
-import Form from '../../components/sekolah/kelas/form-modal'
+import Pagination from '~/components/general/pagination'
+import {genetateParam,default_filter} from '~/utils/general'
+import FilterTop from '~/components/general/filterTop'
+import api from '../../api'
+import swal from 'sweetalert';
 export default {
     components: {
         Tab,
-        Form
+        Pagination,
+        FilterTop
     },
     layout: 'admin',
     data(){
         return {
-            data:{}
+            grid:[],
+            filter:default_filter,
+            form:{
+                nama:'',
+                keterangan:''
+            },
+            error:{
+                nama:''
+            },
+            isSubmit:false
         }
     },
+    created(){
+        this.issubmit = false;
+        this.LoadData();
+    },
     methods:{
-        add(){
-            $("#form").modal('show');
-           
-        }
-    }
+        LoadData(){
+          var param = genetateParam(this.filter);
+          this.$store.dispatch('layout/load',true);
+          api.jurusan.grid(param).then(response =>{
+              this.$store.dispatch('layout/load',false);
+              this.grid = response.data.data
+              this.filter.count = this.grid.length;
+              this.filter.count_data = response.data.count;
+              this.filter.pages = response.data.pages;
+          }).catch(err => {
+            this.$store.dispatch('layout/load',false);
+            swal({
+                title:err.response.data.exception,
+                icon: "error",
+                dangerMode: true,
+            });
+          });
+        },
+        RefrashData(){
+          this.LoadData();
+        },
+        sorting(colum){
+            var sort='sorting';
+            if(colum == this.filter.sort_by && this.filter.order_by == "asc")
+            {
+              sort='sorting_asc'
+            }
+            else if(colum == this.filter.sort_by && this.filter.order_by == "desc"){
+                sort='sorting_desc'
+            }
+            
+            return sort;
+
+        },
+        onSorting(colum){
+            this.filter.sort_by = colum;
+            if(colum == this.filter.sort_by && this.filter.order_by == "asc")
+            {
+                this.filter.order_by='desc'
+            }
+            else if(colum == this.filter.sort_by && this.filter.order_by == "desc"){
+                this.filter.order_by = 'asc'
+            }
+            this.RefrashData();
+        },
+        save(){
+          this.issubmit = true;
+          var validate = this.validate();
+          if(validate){
+            this.$store.dispatch('layout/load',true);
+            this.isproses = true;
+            api.jurusan.save(this.form).then(response => {
+              this.$store.dispatch('layout/load',false);
+              this.issubmit = false;
+              this.isproses = false;
+              swal({
+                title:"success",
+                icon: "success",
+              });
+              this.resetForm();
+              this.LoadData();
+            }).catch(err => {
+              if(err.response.status == 422){
+                  if(err.response.data.exist)
+                  {
+                    this.error.nama = err.response.data.exist;
+                  }
+                  if(err.response.data.exception)
+                  {
+                    swal({
+                        title:err.response.data.exception,
+                        icon: "error",
+                        dangerMode: true,
+                    });
+                  }
+              }else{
+                swal({
+                    title:err.response.data.exception,
+                    icon: "error",
+                    dangerMode: true,
+                });
+              }
+            
+              this.isproses = false;
+              this.$store.dispatch('layout/load',false);
+            })
+          }
+        },
+        validate(){
+            var isvalid = true;
+            
+            if(!this.form.nama){
+                this.error.nama = "nama harus di isi"
+                isvalid = false;
+            }
+            return isvalid;
+       },
+       resetForm(){
+            this.issubmit = false;
+            this.form = {
+              nama:'',
+            }
+            this.error = {
+              nama :'',
+            }
+       },
+       onDelete(id){
+            swal({
+            title: "Apa anda yakin?",
+            text: "Anda akan menghapus data jurusan",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((res) => {
+                if(res){
+                    this.delete(id);
+                }
+            });
+       },
+       delete(id){
+           this.$store.dispatch('layout/load',true);
+            api.jurusan.delete(id).then(res => {
+               this.$store.dispatch('layout/load',false);
+               this.RefrashData();
+               swal({
+                title:"success",
+                icon: "success",
+              });
+            }).catch(err => {
+                this.$store.dispatch('layout/load',false);
+                swal({
+                    title:"Error",
+                    text: err.response.data.message,
+                    icon: "error",
+                    dangerMode: true,
+                });
+            });
+       }
+    },
+
 }
 </script>
 

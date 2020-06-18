@@ -18,6 +18,12 @@
           <span>Dashboard</span></a>
       </li>
 
+      <li class="nav-item" id="ppdb" v-if="$store.state.auth.isAdmin">
+        <a class="nav-link" href="/ppdb/">
+          <i class="fa fa-address-card"></i>
+          <span>PPDB</span></a>
+      </li>
+
       <li class="nav-item" id="sekolah" v-if="$store.state.auth.isAdmin">
         <a class="nav-link" href="/sekolah/guru">
           <i class="fas fa-fw fa-graduation-cap"></i>

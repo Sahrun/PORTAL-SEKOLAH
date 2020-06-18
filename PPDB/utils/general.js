@@ -1,3 +1,5 @@
+import swal from 'sweetalert';
+
 // Function
 export function genetateParam (filter) {
   var param ="";
@@ -42,4 +44,23 @@ export const default_filter =
                 pages:0
             }
 
+// End
+
+
+
+// Swal
+export function swal_error(text="error",title="error",icon="error"){
+  swal({
+    title:title,
+    text:text,
+    icon: icon,
+    dangerMode: true,
+  });
+}
+export function  swal_success(title="success",icon="success"){
+  swal({
+    title:title,
+    icon: icon,
+  });
+}
 // End

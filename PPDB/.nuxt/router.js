@@ -7,6 +7,7 @@ const _7ed1faa6 = () => interopDefault(import('..\\pages\\about\\index.vue' /* w
 const _307bc354 = () => interopDefault(import('..\\pages\\daftar-sekolah.vue' /* webpackChunkName: "pages_daftar-sekolah" */))
 const _01923fbc = () => interopDefault(import('..\\pages\\dashboard.vue' /* webpackChunkName: "pages_dashboard" */))
 const _313ccbde = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
+const _1bd08b88 = () => interopDefault(import('..\\pages\\ppdb\\index.vue' /* webpackChunkName: "pages_ppdb_index" */))
 const _554e0daa = () => interopDefault(import('..\\pages\\register.vue' /* webpackChunkName: "pages_register" */))
 const _749e62e2 = () => interopDefault(import('..\\pages\\registrasi-sekolah\\index.vue' /* webpackChunkName: "pages_registrasi-sekolah_index" */))
 const _252f2bdc = () => interopDefault(import('..\\pages\\siswa-baru\\index.vue' /* webpackChunkName: "pages_siswa-baru_index" */))
@@ -60,6 +61,10 @@ export const routerOptions = {
     path: "/login",
     component: _313ccbde,
     name: "login"
+  }, {
+    path: "/ppdb",
+    component: _1bd08b88,
+    name: "ppdb"
   }, {
     path: "/register",
     component: _554e0daa,

@@ -16,6 +16,12 @@ class Parameter {
         "guru"        => ["key" => "guru","val" => "Guru"]
     );
 
+    public $kelas = array(
+        'X'   => 'X',
+        'XI'  => 'XI',
+        'XII' => 'XII',
+    );
+
 }
 
 class DefaultValue 

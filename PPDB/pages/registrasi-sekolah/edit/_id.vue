@@ -190,7 +190,7 @@
 
 <script>
 import api from '~/api'
-import {isNUll} from '~/utils/general'
+import {isNUll,swal_error,swal_success} from '~/utils/general'
 export default {
     layout: 'admin',
     data(){
@@ -238,7 +238,8 @@ export default {
                  this.$store.dispatch('layout/load',false);
                  this.param.status = response[0].data;
                  this.form = response[1].data.data;
-            }).catch(e => {
+            }).catch(err => {
+                 swal_error(err.response.data.exception)
                  this.$store.dispatch('layout/load',false);
             });
         }
@@ -254,17 +255,17 @@ export default {
                 api.sekolah.update(this.form).then(res => {
                     this.issubmit = false;
                     this.isproses = false;
+                    swal_success();
                     this.$store.dispatch('layout/load',false);
                     this.$router.push('/registrasi-sekolah/');
                 }).catch(err => {
                     if(err.response.status == 422){
-                        alert(err.response.data.message);
                         if(err.response.data.field == "sekolah")
                         {
                             this.error.sekolah = err.response.data.message;
                         }
                     }else{
-                        alert(err.response.data.exception);
+                        swal_error(err.response.data.exception)
                     }
                     this.isproses = false;
                     this.$store.dispatch('layout/load',false);

@@ -39,7 +39,10 @@ export default function ({store, redirect, route}) {
               return redirect('/pendaftaran/daftar')
              }
         }else if(store.state.auth.isAdmin){
-            return redirect('/dashboard')
+          if(path == 'registrasi-sekolah')
+          {
+             return redirect('/dashboard')
+          }
         }else if(store.state.auth.isSuperAdmin)
         {
           if(path !== 'registrasi-sekolah')

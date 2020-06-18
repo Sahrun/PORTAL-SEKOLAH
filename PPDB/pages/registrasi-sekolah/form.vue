@@ -156,7 +156,7 @@
                                         v-bind:class="{
                                         'is-invalid' : (error.admin_name && issubmit), 
                                         'is-valid' : (!error.admin_name && issubmit)
-                                    }"
+                                        }"
                                         @change="error.admin_name=''"
                                         maxlength="255"
                                     />
@@ -201,7 +201,8 @@
 </template>
 
 <script>
-import api from '../../api';
+import {isNUll,swal_error,swal_success} from '~/utils/general'
+import api from '~/api';
 export default {
     layout: 'admin',
     data(){
@@ -261,10 +262,10 @@ export default {
                     this.issubmit = false;
                     this.isproses = false;
                     this.$store.dispatch('layout/load',false);
+                    swal_success();
                     this.$router.push('/registrasi-sekolah/');
                 }).catch(err => {
                     if(err.response.status == 422){
-                        alert(err.response.data.message);
                         if(err.response.data.field == "sekolah")
                         {
                             this.error.sekolah = err.response.data.message;
@@ -272,7 +273,7 @@ export default {
                             this.error.admin_email = err.response.data.message;
                         }
                     }else{
-                        alert(err.response.data.exception);
+                        swal_error(err.response.data.exception)
                     }
                     this.isproses = false;
                     this.$store.dispatch('layout/load',false);
